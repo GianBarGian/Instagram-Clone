@@ -2,7 +2,7 @@ import React from 'react';
 import './SearchBar.css';
 import camera from "../../assets/camera.svg";
 import logo from "../../assets/instagramLogo.png";
-import heart from "../../assets/heart.svg"
+import heart from "../../assets/heart.svg";
 
 export default function SearchBar() {
     return (
