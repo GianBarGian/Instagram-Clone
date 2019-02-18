@@ -5,6 +5,8 @@ import heart from "../../assets/heart.svg";
 import CommentSection from '../CommentSection/CommentSection';
 
 export default function Post({ post }) {
+    const dateFromNow = moment(post.timestamp, "MMM-Do-YYYY-hh-mm-ss-A").fromNow();
+
     return (
         <div className="post">
             <div className="user">
@@ -20,7 +22,7 @@ export default function Post({ post }) {
                 <p className="likes"><span>{post.likes} likes</span></p>
             </div>
             <CommentSection comments={post.comments} />
-            <p className="timestamp">{post.timestamp}</p>
+            <p className="timestamp">{dateFromNow}</p>
         </div>
     )
 }
