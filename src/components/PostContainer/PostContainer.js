@@ -5,8 +5,8 @@ import Post from './Post';
 
 export default function PostContainer({ data }) {
     return (
-        <div>
+        <section className="post-container">
             {data.map(post => <Post post={post} />)}
-        </div>
+        </section >
     )
 }
