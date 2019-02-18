@@ -1,4 +1,6 @@
 import React from 'react';
+import moment from 'moment';
+import PT from 'prop-types';
 import heart from "../../assets/heart.svg";
 import CommentSection from '../CommentSection/CommentSection';
 
@@ -21,4 +23,16 @@ export default function Post({ post }) {
             <p className="timestamp">{post.timestamp}</p>
         </div>
     )
+}
+
+
+Post.propTypes = {
+    post: PT.shape({
+        username: PT.string.isRequired,
+        thumbnailUrl: PT.string.isRequired,
+        imageUrl: PT.string.isRequired,
+        likes: PT.number.isRequired,
+        timestamp: PT.string.isRequired,
+        comments: PT.array.isRequired,
+    })
 }
