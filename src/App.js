@@ -9,16 +9,54 @@ class App extends Component {
     super(props);
 
     this.state = {
-      data: dummyData
+      data: [],
+      addComment: {
+        username: "",
+        text: "",
+      }
     };
+  }
+
+  componentDidMount() {
+    this.setState({
+      data: dummyData
+    })
+  }
+
+  changeComment = event => {
+    this.setState({
+      addComment: {
+        username: 'Giacomo',
+        text: event.target.value
+      }
+    })
+  }
+
+  postComment = (comment, idx) => {
+    const newComment = { username: 'Giacomo', text: ""};
+    newComment.text = comment.text; 
+    const commentsArr = this.state.data.map(post => post.comments.slice());
+    commentsArr[idx].push(newComment);
+    const newData = this.state.data;
+    newData.map((post, idx) => post.comments = commentsArr[idx]);
+
+    this.setState({
+      data: newData
+    })
+
   }
   
   
   render() {
     return (
-      <div className="container">
+      <div  className="container">
         <SearchBar />
-        <PostContainer data={this.state.data} />
+        <PostContainer 
+          postComment={this.postComment} 
+          changeComment={this.changeComment} 
+          data={this.state.data} 
+          addComment={this.state.addComment}
+        />
       </div>
     );
   }

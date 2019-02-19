@@ -3,8 +3,9 @@ import moment from 'moment';
 import PT from 'prop-types';
 import heart from "../../assets/heart.svg";
 import CommentSection from '../CommentSection/CommentSection';
+import AddComment from '../PostContainer/AddComment';
 
-export default function Post({ post }) {
+export default function Post({ post, postComment, changeComment, addComment, id }) {
     const dateFromNow = moment(post.timestamp, "MMM-Do-YYYY-hh-mm-ss-A").fromNow();
 
     return (
@@ -23,6 +24,7 @@ export default function Post({ post }) {
             </div>
             <CommentSection comments={post.comments} />
             <p className="timestamp">{dateFromNow}</p>
+            <AddComment id={id} addComment={addComment} postComment={postComment} changeComment={changeComment} />
         </div>
     )
 }

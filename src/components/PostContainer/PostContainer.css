@@ -46,3 +46,13 @@ span {
     color: rgb(185, 180, 180);
     font-size: 0.7rem;
 }
+
+.add-comment input {
+    width: 78%;
+}
+
+.add-comment button {
+    background: white;
+    border: unset;
+    padding-left: 5.5%;
+}
