@@ -4,7 +4,7 @@ import './PostContainer.css';
 import Post from './Post';
 
 
-export default function PostContainer({ data, postComment, changeComment, addComment }) {
+export default function PostContainer({ data, postComment, changeComment, addComment, updateLikes }) {
     return (
         <section className="post-container">
             {data.map((post, idx) => 
@@ -13,8 +13,9 @@ export default function PostContainer({ data, postComment, changeComment, addCom
                     changeComment={changeComment} 
                     post={post} 
                     key={idx}
-                    id ={idx}
+                    idx ={idx}
                     addComment={addComment} 
+                    updateLikes={updateLikes}
                 />)}
         </section >
     )

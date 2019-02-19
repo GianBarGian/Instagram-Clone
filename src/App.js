@@ -26,7 +26,7 @@ class App extends Component {
   changeComment = event => {
     this.setState({
       addComment: {
-        username: 'Giacomo',
+        username: '',
         text: event.target.value
       }
     })
@@ -45,17 +45,30 @@ class App extends Component {
     })
 
   }
+
+  updateLikes = idx => {
+    const likes = []
+    this.state.data.map(post => likes.push(post.likes));
+    likes[idx]++;
+    const newData = this.state.data;
+    newData.map((post, idx) => post.likes = likes[idx]);
+
+    this.setState({
+      data: newData
+    })
+  }
   
   
   render() {
     return (
-      <div  className="container">
+      <div className="container">
         <SearchBar />
         <PostContainer 
           postComment={this.postComment} 
           changeComment={this.changeComment} 
           data={this.state.data} 
           addComment={this.state.addComment}
+          updateLikes={this.updateLikes}
         />
       </div>
     );

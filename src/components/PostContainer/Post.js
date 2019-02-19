@@ -5,7 +5,8 @@ import heart from "../../assets/heart.svg";
 import CommentSection from '../CommentSection/CommentSection';
 import AddComment from '../PostContainer/AddComment';
 
-export default function Post({ post, postComment, changeComment, addComment, id }) {
+export default function Post({ post, postComment, changeComment, addComment, idx, updateLikes }) {
+    
     const dateFromNow = moment(post.timestamp, "MMM-Do-YYYY-hh-mm-ss-A").fromNow();
 
     return (
@@ -17,14 +18,19 @@ export default function Post({ post, postComment, changeComment, addComment, id 
             <div className="post-content">
                 <img className="main-img" src={post.imageUrl} alt="image" />
                 <div className="icons">
-                    <img src={heart} alt="heart" />
+                    <img onClick={() => updateLikes(idx)} src={heart} alt="heart" />
                     <img src={heart} alt="heart" />
                 </div>
                 <p className="likes"><span>{post.likes} likes</span></p>
             </div>
             <CommentSection comments={post.comments} />
             <p className="timestamp">{dateFromNow}</p>
-            <AddComment id={id} addComment={addComment} postComment={postComment} changeComment={changeComment} />
+            <AddComment 
+                idx={idx} 
+                addComment={addComment} 
+                postComment={postComment} 
+                changeComment={changeComment} 
+            />
         </div>
     )
 }
