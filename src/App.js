@@ -13,7 +13,8 @@ class App extends Component {
       addComment: {
         username: "",
         text: "",
-      }
+      },
+      searchValue: "",
     };
   }
 
@@ -23,12 +24,26 @@ class App extends Component {
     })
   }
 
-  changeComment = event => {
+  changeComment = (event) => {
     this.setState({
       addComment: {
         username: '',
         text: event.target.value
       }
+    })
+  }
+  
+  changeSearch = (event) => {
+    this.setState({
+      searchValue: event.target.value
+    })
+  }
+
+  searchPost = username => {
+    const searchArray = this.state.data.filter(post => post.username === username);
+
+    this.setState({
+      data: searchArray
     })
   }
 
@@ -62,7 +77,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <SearchBar />
+        <SearchBar searchValue={this.state.searchValue} searchPost={this.searchPost} changeSearch={this.changeSearch}/>
         <PostContainer 
           postComment={this.postComment} 
           changeComment={this.changeComment} 
