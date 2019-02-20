@@ -1,0 +1,48 @@
+.post-container {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.post {
+    border: 1px solid lightgray;
+    margin-top: 20px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.user img {
+    padding: 0 1%;
+    border-radius: 50%;
+}
+
+.user h2 {
+    font-size: 0.9rem;
+}
+
+.post-content  .main-img{
+    width: 100%;
+    height: auto;
+
+}
+
+.icons img {
+    padding: 3px 1%;
+    height: 25px;
+}
+
+span {
+    font-weight: bold;
+}
+
+.comment-section p {
+    font-size: 0.9rem;
+}
+
+.timestamp {
+    color: rgb(185, 180, 180);
+    font-size: 0.7rem;
+}
