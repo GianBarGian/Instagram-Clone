@@ -71,6 +71,10 @@ class App extends Component {
       data: newData
     })
   }
+
+  login = () => {
+    localStorage.setItem('username', 'Giacomo');
+  }
   
   
   render() {
