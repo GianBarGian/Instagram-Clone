@@ -23,6 +23,12 @@ class App extends Component {
     })
   }
 
+  // componentDidUpdate() {
+  //   if (!localStorage.getItem('username')) {
+
+  //   }
+  // }
+
   changeComment = (event) => {
     this.setState({
       addComment: {
@@ -47,7 +53,7 @@ class App extends Component {
   }
 
   postComment = (comment, idx) => {
-    const newComment = { username: 'Giacomo', text: ""};
+    const newComment = { username: localStorage.getItem('username'), text: ""};
     newComment.text = comment.text; 
     const commentsArr = this.state.data.map(post => post.comments.slice());
     commentsArr[idx].push(newComment);
@@ -72,9 +78,7 @@ class App extends Component {
     })
   }
 
-  login = () => {
-    localStorage.setItem('username', 'Giacomo');
-  }
+  
   
   
   render() {
