@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import dummyData from './dummy-data';
-import SearchBar from './components/SearchBar/SearchBar';
-import PostContainer from './components/PostContainer/PostContainer';
+import PostsPage from './components/PostContainer/PostsPage';
 
 class App extends Component {
   constructor(props) {
@@ -23,6 +22,12 @@ class App extends Component {
       data: dummyData
     })
   }
+
+  // componentDidUpdate() {
+  //   if (!localStorage.getItem('username')) {
+
+  //   }
+  // }
 
   changeComment = (event) => {
     this.setState({
@@ -48,7 +53,7 @@ class App extends Component {
   }
 
   postComment = (comment, idx) => {
-    const newComment = { username: 'Giacomo', text: ""};
+    const newComment = { username: localStorage.getItem('username'), text: ""};
     newComment.text = comment.text; 
     const commentsArr = this.state.data.map(post => post.comments.slice());
     commentsArr[idx].push(newComment);
@@ -72,20 +77,22 @@ class App extends Component {
       data: newData
     })
   }
+
+  
   
   
   render() {
     return (
-      <div className="container">
-        <SearchBar searchValue={this.state.searchValue} searchPost={this.searchPost} changeSearch={this.changeSearch}/>
-        <PostContainer 
-          postComment={this.postComment} 
-          changeComment={this.changeComment} 
-          data={this.state.data} 
-          addComment={this.state.addComment}
-          updateLikes={this.updateLikes}
-        />
-      </div>
+      <PostsPage
+        searchValue={this.state.searchValue} 
+        searchPost={this.searchPost} 
+        changeSearch={this.changeSearch} 
+        postComment={this.postComment} 
+        changeComment={this.changeComment} 
+        data={this.state.data} 
+        addComment={this.state.addComment}
+        updateLikes={this.updateLikes}
+      />
     );
   }
 }
