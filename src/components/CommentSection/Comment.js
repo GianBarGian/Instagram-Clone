@@ -1,19 +1,21 @@
 import React from 'react';
 import PT from 'prop-types';
 import styled from 'styled-components';
+import UsernameStyle from '../../Styles/Reusable/UsernameStyle';
 
-const CommentStyled = styled.p`
+const CommentStyled = styled.div`
     font-size: 0.9rem;
-    span {
-        font-weight: bold;
-    }
+    line-height: 1.5;
+    display: flex;
+    align-items: baseline;
 `;
 
 
 export default function Comment({ comment }) {
     return (
         <CommentStyled>
-            <span>{comment.username}</span> {comment.text}
+            <UsernameStyle username={comment.username}/> 
+            <p>{comment.text}</p>
         </CommentStyled>
     )
 }

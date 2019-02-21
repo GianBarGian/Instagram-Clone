@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import heart from "../../assets/heart.svg";
 import CommentSection from '../CommentSection/CommentSection';
 import AddComment from '../PostContainer/AddComment';
+import UsernameStyle, { theme } from '../../Styles/Reusable/UsernameStyle';
 
 const PostStyled = styled.div`
     border: 1px solid lightgray;
@@ -20,10 +21,6 @@ const UserStyled = styled.div`
         height: 30px;
         padding: 0 1%;
         border-radius: 50%;
-    }
-
-    h2 {
-        font-size: 0.9rem;
     }
 `;
 
@@ -57,7 +54,7 @@ export default function Post({ post, postComment, changeComment, addComment, idx
         <PostStyled>
             <UserStyled>
                 <img src={post.thumbnailUrl} alt="thumbnail" />
-                <h2>{post.username}</h2>
+                <UsernameStyle boldness={theme.boldness.title} username={post.username}/>
             </UserStyled>
             <PostContentStyled>
                 <img src={post.imageUrl} alt="image" />
