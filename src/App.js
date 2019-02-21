@@ -3,6 +3,7 @@ import './App.css';
 import dummyData from './dummy-data';
 import PostsPage from './components/PostContainer/PostsPage';
 
+
 class App extends Component {
   constructor(props) {
     super(props);
