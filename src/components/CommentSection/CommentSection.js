@@ -4,7 +4,7 @@ import Comment from './Comment';
 
 export default function CommentSection({ comments }) {
     return (
-        <div className="comment-section">
+        <div>
             {comments.map((comment, idx) => <Comment key={idx} comment={comment}/>)}
         </div>
     )
