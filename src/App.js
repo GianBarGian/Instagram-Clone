@@ -3,16 +3,17 @@ import './App.css';
 import dummyData from './dummy-data';
 import PostsPage from './components/PostContainer/PostsPage';
 
+
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       data: [],
-      addComment: {
+      addComment: [{
         username: "",
         text: "",
-      },
+      }],
       searchValue: "",
     };
   }
@@ -23,21 +24,20 @@ class App extends Component {
     })
   }
 
-  // componentDidUpdate() {
-  //   if (!localStorage.getItem('username')) {
+  handleChange = (idx, evt) => {
+    const cloneAddComment = this.state.addComment;
+    for (let i = idx; i > 0; i-- )  {
+      cloneAddComment.push({username: "", text: ""})
+    }
+    cloneAddComment.splice(idx + 1);
+    const newAddComment = cloneAddComment.map((comment, commentIdx) => {
+      if (idx !== commentIdx) return comment;
+      return { ...comment, text: evt.target.value };
+    });
+    this.setState({ addComment: newAddComment });
+  };
 
-  //   }
-  // }
 
-  changeComment = (event) => {
-    this.setState({
-      addComment: {
-        username: '',
-        text: event.target.value
-      }
-    })
-  }
-  
   changeSearch = (event) => {
     this.setState({
       searchValue: event.target.value
@@ -54,7 +54,7 @@ class App extends Component {
 
   postComment = (comment, idx) => {
     const newComment = { username: localStorage.getItem('username'), text: ""};
-    newComment.text = comment.text; 
+    newComment.text = comment[idx].text; 
     const commentsArr = this.state.data.map(post => post.comments.slice());
     commentsArr[idx].push(newComment);
     const newData = this.state.data;
@@ -88,7 +88,7 @@ class App extends Component {
         searchPost={this.searchPost} 
         changeSearch={this.changeSearch} 
         postComment={this.postComment} 
-        changeComment={this.changeComment} 
+        changeComment={this.handleChange} 
         data={this.state.data} 
         addComment={this.state.addComment}
         updateLikes={this.updateLikes}

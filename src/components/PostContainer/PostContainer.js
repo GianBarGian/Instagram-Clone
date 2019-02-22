@@ -1,12 +1,16 @@
 import React from 'react';
 import PT from 'prop-types';
-import './PostContainer.css';
+import styled from 'styled-components';
 import Post from './Post';
 
+const PostContainerStyled = styled.section`
+    width: 500px;
+    margin: 0 auto;
+`;
 
 export default function PostContainer({ data, postComment, changeComment, addComment, updateLikes }) {
     return (
-        <section className="post-container">
+        <PostContainerStyled>
             {data.map((post, idx) => 
                 <Post 
                     postComment={postComment} 
@@ -17,7 +21,7 @@ export default function PostContainer({ data, postComment, changeComment, addCom
                     addComment={addComment} 
                     updateLikes={updateLikes}
                 />)}
-        </section >
+        </PostContainerStyled>
     )
 }
 
